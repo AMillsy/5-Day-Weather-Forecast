@@ -80,12 +80,16 @@ input {
 /* MAIN SECTION ////////////////////////////////////*/
 
 #current-day {
+  width: 100%;
+  border: 2px solid black;
   margin: 1rem;
-  font-size: 150%;
+  font-size: 175%;
+  text-align: left;
+  padding: 1rem;
 }
 
 #extra-days {
-  background-color: #134074;
+  background-color: var(--primary-colour);
   color: var(--font-colour);
   border-radius: 0.5rem;
   box-shadow: 5px 5px 8px #999;
@@ -94,7 +98,7 @@ input {
 }
 .forecast-container {
   width: 80%;
-  background-color: aquamarine;
+
   display: flex;
   flex-direction: column;
   margin: 2rem;
@@ -109,5 +113,6 @@ input {
 }
 
 li {
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
