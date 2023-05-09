@@ -10,16 +10,39 @@
   </head>
   <body>
     <header>Weather Forecast</header>
-    <aside>
-      <form>
-        <input type="text" id="location" placeholder="London, UK" />
-        <button>Search</button>
-      </form>
-      <section class="previous-locations">
-        <div class="previous-location-container">Location name</div>
-      </section>
-    </aside>
-    <main></main>
+    <main>
+      <aside>
+        <form>
+          <input type="text" id="location" placeholder="London, UK" />
+          <button>Search</button>
+        </form>
+        <section class="previous-locations">
+          <div class="previous-location-container">Location name</div>
+        </section>
+      </aside>
+      <div class="forecast-container">
+        <section id="current-day">
+          <h2>Location name (Today)</h2>
+          <ul class="forecast">
+            <li>Temp</li>
+            <li>Humidity</li>
+            <li>Wind</li>
+          </ul>
+        </section>
+        <section id="extra-days">
+          <!-- MAKE THESE CARDS WITH JAVASCRIPT-->
+          <card class="day">
+            <h2>Location name (Date)</h2>
+            <ul class="forecast">
+              <li>Temp</li>
+              <li>Humidity</li>
+              <li>Wind</li>
+            </ul>
+          </card>
+          <!-- MAKE THESE CARDS WITH JAVASCRIPT-->
+        </section>
+      </div>
+    </main>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
