@@ -1,0 +1,47 @@
+:root {
+  --primary-colour: #134074;
+  --font-colour: #f6f2ff;
+}
+
+header {
+  background-color: var(--primary-colour);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  font-size: 300%;
+  font-weight: bolder;
+  color: var(--font-colour);
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 20%;
+  min-height: 20vh;
+  border: 2px black solid;
+  border-radius: 5px;
+}
+
+form {
+  margin: 1rem;
+}
+
+button {
+  background-color: var(--primary-colour);
+  padding: 0.25rem;
+  color: var(--font-colour);
+  border-radius: 0.5rem;
+  font-weight: bolder;
+}
+
+input {
+  padding: 0.25rem;
+}
+
+.previous-locations {
+  border-top: 1px solid black;
+  background-color: red;
+  width: 100%;
+}
