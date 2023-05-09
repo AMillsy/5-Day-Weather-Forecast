@@ -14,8 +14,6 @@ form.addEventListener(`submit`, function (e) {
   findLocation(inputValue);
 });
 
-function searchLocation() {}
-
 function findLocation(inputValue) {
   let forecastLocation = [];
 
@@ -28,6 +26,18 @@ function findLocation(inputValue) {
     .then(function (resp) {
       if (!resp.length) return console.log(`No location found`);
       forecastLocation = [resp[0].lat, resp[0].lon];
+      searchLocation(forecastLocation);
+    });
+}
+
+function searchLocation(forecastLoc) {
+  fetch(
+    `${FORECAST_WEATHER_API}lat=${forecastLoc[0]}&lon=${forecastLoc[1]}&units=metric&limit=5&appid=${API_KEY}`
+  )
+    .then(function (resp) {
+      return resp.json();
+    })
+    .then(function (resp) {
       console.log(resp);
     });
 }
