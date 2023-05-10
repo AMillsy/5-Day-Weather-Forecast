@@ -5,6 +5,8 @@ const currentDayForecast = document.querySelector(`#current-day-forecast`);
 
 const currentDayLocation = document.querySelector(`#current-day-location`);
 
+const extraDaysForecasts = document.querySelector(`#extra-days`);
+
 const API_KEY = `aa43f0596ff095c3dad63e8ba10d6ae6`;
 const FORECAST_WEATHER_API = `http://api.openweathermap.org/data/2.5/forecast?`;
 const LOCATION_API = `http://api.openweathermap.org/geo/1.0/direct?`;
@@ -42,6 +44,7 @@ function searchLocation(forecastLoc) {
     })
     .then(function (resp) {
       showCurrentDayForecast(resp);
+      showExtraDaysForecast(resp);
     });
 }
 
@@ -57,9 +60,30 @@ function showCurrentDayForecast(forecast) {
 }
 
 function showExtraDaysForecast(forecast) {
+  extraDaysForecasts.innerHTML = ``;
   for (let i = 8; i < 40; i += 8) {
     if (i > 39) i = 39; //Data gets sent up to 39 timeframes
 
-    const currentForecast = forecast.list[i];
+    const extraForecast = forecast.list[i];
+    const html = ` <card class="day">
+            <h2>${formatDate(extraForecast.dt_txt)}</h2>
+            <ul class="forecast">
+              <li>Temp: ${extraForecast.main.temp}°</li>
+              <li>Humidity: ${extraForecast.main.humidity}%</li>
+              <li>Wind: ${extraForecast.wind.speed} m/s</li>
+            </ul>
+          </card>`;
+
+    extraDaysForecasts.insertAdjacentHTML(`beforeend`, html);
   }
+}
+
+function formatDate(date) {
+  // prettier-ignore
+  const weekday = [
+    "Sunday", "Monday", "Tuesday", "Wednesday",
+    "Thursday", "Friday", "Saturday",
+  ];
+  const day = new Date(date).getDay();
+  return weekday[day];
 }
