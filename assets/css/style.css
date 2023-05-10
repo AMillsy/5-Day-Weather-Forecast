@@ -1,6 +1,7 @@
 :root {
   --primary-colour: #134074;
   --secondary-colour: #8367c7;
+  --main-forecast-colour: #5e0035;
   --secondary-hover-colour: #9d82e2;
   --font-colour: #f6f2ff;
 }
@@ -80,12 +81,15 @@ input {
 /* MAIN SECTION ////////////////////////////////////*/
 
 #current-day {
-  width: 100%;
+  background-color: var(--main-forecast-colour);
+  border-radius: 1rem;
+  width: 60%;
   border: 2px solid black;
   margin: 1rem;
   font-size: 175%;
-  text-align: left;
+  text-align: center;
   padding: 1rem;
+  color: var(--font-colour);
 }
 
 #extra-days {

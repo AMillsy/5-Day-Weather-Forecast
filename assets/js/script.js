@@ -13,6 +13,12 @@ const API_KEY = `aa43f0596ff095c3dad63e8ba10d6ae6`;
 const FORECAST_WEATHER_API = `http://api.openweathermap.org/data/2.5/forecast?`;
 const LOCATION_API = `http://api.openweathermap.org/geo/1.0/direct?`;
 
+let locationData = localStorage.getItem(`locations`);
+
+if (!locationData) locationData = {};
+
+console.log(locationData);
+
 form.addEventListener(`submit`, function (e) {
   e.preventDefault();
   const parent = e.target.closest(`form`);
@@ -47,6 +53,7 @@ function searchLocation(forecastLoc) {
     .then(function (resp) {
       showCurrentDayForecast(resp);
       showExtraDaysForecast(resp);
+      storePrevLocation(resp);
     });
 }
 
@@ -99,8 +106,17 @@ function formatDate(date) {
   return weekday[day];
 }
 
-/* WEATHER ICON https://openweathermap.org/img/wn/${
-      extraForecast.weather[0].icon
-    }@2x.png
+function storePrevLocation(forecast) {
+  const location = `${forecast.city.name}, ${forecast.city.country}`;
+  locationData.push(location);
+  localStorage.setItem(`locations`, locationData);
+  const html = `<div class="previous-location-container">${location}</div>`;
 
-*/
+  previousLocations.insertAdjacentHTML(`beforeend`, html);
+}
+
+function showPrevLocations() {
+  for (const location of locationData) {
+    location;
+  }
+}
