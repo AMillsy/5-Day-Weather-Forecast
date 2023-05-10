@@ -7,6 +7,8 @@ const currentDayLocation = document.querySelector(`#current-day-location`);
 
 const extraDaysForecasts = document.querySelector(`#extra-days`);
 
+const currentDayIcon = document.querySelector(`#current-day-icon`);
+
 const API_KEY = `aa43f0596ff095c3dad63e8ba10d6ae6`;
 const FORECAST_WEATHER_API = `http://api.openweathermap.org/data/2.5/forecast?`;
 const LOCATION_API = `http://api.openweathermap.org/geo/1.0/direct?`;
@@ -54,6 +56,7 @@ function showCurrentDayForecast(forecast) {
   const windText = currentDayForecast.children[2];
 
   currentDayLocation.textContent = `${forecast.city.name}, ${forecast.city.country} (Today)`;
+  currentDayIcon.src = `https://openweathermap.org/img/wn/${forecast.list[0].weather[0].icon}@2x.png`;
   tempText.textContent = `Temp: ${forecast.list[0].main.temp}°`;
   humidText.textContent = `Humidity: ${forecast.list[0].main.humidity}%`;
   windText.textContent = `Wind: ${forecast.list[0].wind.speed} m/s`;
@@ -69,7 +72,9 @@ function showExtraDaysForecast(forecast) {
     <div id="day-container">
               <h2>${formatDate(extraForecast.dt_txt)}</h2>
               <img
-                src="https://openweathermap.org/img/wn/10d@2x.png"
+                src="https://openweathermap.org/img/wn/${
+                  extraForecast.weather[0].icon
+                }@2x.png"
                 alt="weather icon"
               />
             </div>
