@@ -47,6 +47,14 @@ function findLocation(inputValue) {
     });
 }
 
+previousLocations.addEventListener(`click`, function (e) {
+  if (e.target.className != `previous-location-container`) return;
+
+  console.log(e.target.textContent);
+
+  findLocation(e.target.textContent);
+});
+
 function searchLocation(forecastLoc) {
   fetch(
     `${FORECAST_WEATHER_API}lat=${forecastLoc[0]}&lon=${forecastLoc[1]}&units=metric&limit=5&appid=${API_KEY}`
