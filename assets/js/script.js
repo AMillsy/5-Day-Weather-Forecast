@@ -13,10 +13,12 @@ const API_KEY = `aa43f0596ff095c3dad63e8ba10d6ae6`;
 const FORECAST_WEATHER_API = `http://api.openweathermap.org/data/2.5/forecast?`;
 const LOCATION_API = `http://api.openweathermap.org/geo/1.0/direct?`;
 
-let locationData = localStorage.getItem(`locations`);
+let locationData = JSON.parse(localStorage.getItem(`locations`));
 
-if (!locationData) locationData = {};
-
+if (!locationData) {
+  locationData = {};
+  locationData.cities = [];
+}
 console.log(locationData);
 
 form.addEventListener(`submit`, function (e) {
@@ -108,15 +110,16 @@ function formatDate(date) {
 
 function storePrevLocation(forecast) {
   const location = `${forecast.city.name}, ${forecast.city.country}`;
-  locationData.push(location);
-  localStorage.setItem(`locations`, locationData);
+  locationData.cities.push(location);
+  localStorage.setItem(`locations`, JSON.stringify(locationData));
+  console.log(locationData);
   const html = `<div class="previous-location-container">${location}</div>`;
 
   previousLocations.insertAdjacentHTML(`beforeend`, html);
 }
 
 function showPrevLocations() {
-  for (const location of locationData) {
+  for (const location of locationData.name) {
     location;
   }
 }
