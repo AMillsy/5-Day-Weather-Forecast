@@ -66,7 +66,13 @@ function showExtraDaysForecast(forecast) {
 
     const extraForecast = forecast.list[i];
     const html = ` <card class="day">
-            <h2>${formatDate(extraForecast.dt_txt)}</h2>
+    <div id="day-container">
+              <h2>${formatDate(extraForecast.dt_txt)}</h2>
+              <img
+                src="https://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+              />
+            </div>
             <ul class="forecast">
               <li>Temp: ${extraForecast.main.temp}°</li>
               <li>Humidity: ${extraForecast.main.humidity}%</li>
