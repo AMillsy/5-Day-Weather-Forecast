@@ -87,3 +87,9 @@ function formatDate(date) {
   const day = new Date(date).getDay();
   return weekday[day];
 }
+
+/* WEATHER ICON https://openweathermap.org/img/wn/${
+      extraForecast.weather[0].icon
+    }@2x.png
+
+*/

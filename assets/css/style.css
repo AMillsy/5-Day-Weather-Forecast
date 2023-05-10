@@ -125,3 +125,17 @@ li {
   font-size: 125%;
   width: 25%;
 }
+
+#day-container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+
+img {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  top: -35px;
+  right: 10px;
+}
