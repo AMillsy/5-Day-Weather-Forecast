@@ -19,6 +19,8 @@ if (!locationData) {
   locationData = {};
   locationData.cities = [];
 }
+
+showPrevLocations();
 console.log(locationData);
 
 form.addEventListener(`submit`, function (e) {
@@ -110,16 +112,32 @@ function formatDate(date) {
 
 function storePrevLocation(forecast) {
   const location = `${forecast.city.name}, ${forecast.city.country}`;
-  locationData.cities.push(location);
+
+  if (locationData.cities.includes(location)) {
+    const recentLocation = locationData.cities.splice(
+      locationData.cities.indexOf(location),
+      1
+    );
+    locationData.cities.unshift(...recentLocation);
+  } else {
+    locationData.cities.unshift(location);
+  }
+
   localStorage.setItem(`locations`, JSON.stringify(locationData));
   console.log(locationData);
-  const html = `<div class="previous-location-container">${location}</div>`;
-
-  previousLocations.insertAdjacentHTML(`beforeend`, html);
+  showPrevLocations();
 }
 
 function showPrevLocations() {
-  for (const location of locationData.name) {
-    location;
+  locationData = JSON.parse(localStorage.getItem(`locations`));
+  if (!locationData) {
+    locationData = {};
+    locationData.cities = [];
+  }
+  previousLocations.innerHTML = "";
+  for (const city of locationData.cities) {
+    const html = `<div class="previous-location-container">${city}</div>`;
+
+    previousLocations.insertAdjacentHTML(`beforeend`, html);
   }
 }
