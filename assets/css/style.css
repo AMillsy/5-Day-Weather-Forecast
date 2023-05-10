@@ -78,6 +78,12 @@ input {
   }
 }
 
+p {
+  margin: 2px;
+  color: red;
+  text-align: center;
+}
+
 /* MAIN SECTION ////////////////////////////////////*/
 
 #current-day {
