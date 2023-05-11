@@ -41,7 +41,7 @@ function findLocation(inputValue, fromPrevLoc = false) {
   fetch(`${LOCATION_API}q=${inputValue}&appid=${API_KEY}`)
     .then(function (response) {
       if (response.status !== 200)
-        return showErrorMessage(`Location not found`);
+        return showErrorMessage(`Error getting information`);
 
       return response.json();
     })
