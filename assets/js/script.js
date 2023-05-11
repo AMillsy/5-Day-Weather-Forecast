@@ -29,7 +29,13 @@ form.addEventListener(`submit`, function (e) {
   findLocation(inputValue);
 });
 
-function findLocation(inputValue) {
+previousLocations.addEventListener(`click`, function (e) {
+  if (e.target.className != `previous-location-container`) return;
+
+  findLocation(e.target.textContent, true);
+});
+
+function findLocation(inputValue, fromPrevLoc = false) {
   let forecastLocation = [];
 
   fetch(`${LOCATION_API}q=${inputValue}&appid=${API_KEY}`)
@@ -40,17 +46,20 @@ function findLocation(inputValue) {
       return response.json();
     })
     .then(function (resp) {
-      if (!resp.length) return showErrorMessage(`Location not found`);
+      if (!resp.length) {
+        if (fromPrevLoc) {
+          removeLocation(inputValue);
+          return showErrorMessage(
+            `Error in Previous Location, Please try a different location`
+          );
+        } else {
+          return showErrorMessage(`Location not found`);
+        }
+      }
       forecastLocation = [resp[0].lat, resp[0].lon];
       searchLocation(forecastLocation);
     });
 }
-
-previousLocations.addEventListener(`click`, function (e) {
-  if (e.target.className != `previous-location-container`) return;
-
-  findLocation(e.target.textContent);
-});
 
 function searchLocation(forecastLoc) {
   fetch(
@@ -151,5 +160,14 @@ function showErrorMessage(message) {
   clearTimeout(errorMessageTimer);
   errorMessageTimer = setTimeout(function () {
     errorMessage.textContent = ``;
-  }, 1000);
+  }, 3000);
+}
+
+function removeLocation(loc) {
+  const recentLocation = locationData.cities.splice(
+    locationData.cities.indexOf(loc),
+    1
+  );
+  localStorage.setItem(`locations`, JSON.stringify(locationData));
+  showPrevLocations();
 }
