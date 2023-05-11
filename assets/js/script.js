@@ -8,8 +8,8 @@ const currentDayIcon = document.querySelector(`#current-day-icon`);
 const errorMessage = document.querySelector(`p`);
 
 const API_KEY = `aa43f0596ff095c3dad63e8ba10d6ae6`;
-const FORECAST_WEATHER_API = `http://api.openweathermap.org/data/2.5/forecast?`;
-const LOCATION_API = `http://api.openweathermap.org/geo/1.0/direct?`;
+const FORECAST_WEATHER_API = `https://api.openweathermap.org/data/2.5/forecast?`;
+const LOCATION_API = `https://api.openweathermap.org/geo/1.0/direct?`;
 
 let locationData = JSON.parse(localStorage.getItem(`locations`));
 let errorMessageTimer;

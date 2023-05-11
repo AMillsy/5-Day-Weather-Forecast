@@ -28,4 +28,4 @@ THEN I am again presented with current and future conditions for that city
 
 This is the first time using Server Side API's and how to get data from the API's. It was interesting how to get the data and then how to convert and use the data. This week we had to make a weather forecast using the Openweathermap.org. The first API would get the Latitude and Longitude, which then was passed onto the API that would get me the forecast in the location that I presented. I found it enjoyable to read the documentation and then learn how to manipulated the JSON that I retrieved.
 
-I found it difficult to understand the JSON I recieved back and because I had to make a 5 day forecast, but when getting the JSON, you get 3 hour timestamps, so I had manipulate the data I retrieved to get the results I wanted.
+I found it difficult to understand the JSON I recieved back and because I had to make a 5 day forecast, but when getting the JSON, you get 3 hour timestamps. I had manipulate the data I retrieved to get the results I wanted. Furthermore, it was interesting going through the query syt
